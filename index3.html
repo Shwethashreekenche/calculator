@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style3.css" />
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+        <script >
+            var ans = "";
+            var clear = false;
+            var calc = "";
+            $(document).ready(function() {
+            $("button").click(function() {
+                var text = $(this).attr("value");
+                if(parseInt(text, 10) == text || text === "." || text === "/" || text === "*" || text === "-" || text === "+" || text === "%") {
+                if(clear === false) {
+                    calc += text;
+                    $(".textbox").val(calc);
+                } else {
+                    calc = text;
+                    $(".textbox").val(calc);
+                    clear = false;
+                }
+                
+                } if(text === "AC") {
+                calc = "";
+                $(".textbox").val("");
+                } else if(text === "CE") {
+                calc = calc.slice(0, -1);
+                $(".textbox").val(calc);
+                } else if(text === "=") {
+                ans = eval(calc);
+                $(".textbox").val(ans);
+                clear = true;
+                }else if(text === "And") { 
+                calc = $(".textbox").val(); 
+                $(".textbox").val(calc); 
+                clear=false;
+                }
+            });
+            });
+        </script>
+        
+        
+    </head>
+    <body>
+    
+        <div class="calculator">
+            <h1>Calculator</h1>
+            <input type="textbox" class="textbox" readonly>
+            <div class="buttons">
+            <button class="button" value="AC">AC</button>
+            <button class="button" value="CE">CE</button>
+            <button class="button" value="%">%</button>
+            <button class="button" value="/">/</button>
+            <button class="button" value="7">7</button>
+            <button class="button" value="8">8</button>
+            <button class="button" value="9">9</button>
+            <button class="button" value="*">*</button>
+            <button class="button" value="4">4</button>
+            <button class="button" value="5">5</button>
+            <button class="button" value="6">6</button>
+            <button class="button" value="-">-</button>
+            <button class="button" value="1">1</button>
+            <button class="button" value="2">2</button>
+            <button class="button" value="3">3</button>
+            <button class="button" value="+">+</button>
+            <button class="button" value=".">.</button>
+            <button class="button" value="0">0</button>
+            <button class="button" value="And">Ans</button>
+            <button class="button" value="=">=</button>
+            </div>
+        </div>
+</body>
+</html>
